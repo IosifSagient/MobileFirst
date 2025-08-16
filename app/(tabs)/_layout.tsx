@@ -1,12 +1,12 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from "expo-router";
+import React from "react";
+import { Platform } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { HapticTab } from "@/components/HapticTab";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import TabBarBackground from "@/components/ui/TabBarBackground";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -14,30 +14,69 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
+            position: "absolute",
           },
           default: {},
         }),
-      }}>
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="weekly/index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Dashbooard",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol
+              size={28}
+              name="books.vertical"
+              color={color}
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="browse/index"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Browse",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol
+              size={28}
+              name="magnifyingglass.circle"
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="list/index"
+        options={{
+          title: "Ingredients",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol
+              size={28}
+              name="list.clipboard"
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings/index"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol
+              size={28}
+              name="gearshape"
+              color={color}
+            />
+          ),
         }}
       />
     </Tabs>

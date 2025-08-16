@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Index() {
+export default function Browse() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello from React Native 👋</Text>
+      <Text style={styles.text}>Hello from Browse</Text>
     </View>
   );
 }
