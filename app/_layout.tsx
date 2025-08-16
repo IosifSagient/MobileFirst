@@ -38,12 +38,12 @@ export default function RootLayout() {
 
         <Stack.Screen
           name="week/[day]"
-          options={{ title: "Day Plan" }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen
           name="recipe/[id]"
-          options={{ title: "Recipe" }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen name="+not-found" />

@@ -2,7 +2,11 @@
 import { Colors } from "@/src/constants/colors";
 import { Spacing } from "@/src/constants/spacing";
 import { Typography } from "@/src/constants/typography";
-import { ingredientsByRecipe, recipesById } from "@/src/data/mealplan";
+import {
+  ingredientsByRecipe,
+  recipesById,
+  stepsByRecipe,
+} from "@/src/data/mealplan";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -23,6 +27,7 @@ export default function RecipeDetail() {
 
   const recipe = id ? recipesById[id] : undefined;
   const ingredients = id ? ingredientsByRecipe[id] : undefined;
+  const steps = id ? stepsByRecipe[id] : undefined;
 
   if (!recipe) {
     return (
@@ -144,9 +149,44 @@ export default function RecipeDetail() {
         {/* (Optional) STEPS placeholder */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Steps</Text>
-          <Text style={styles.muted}>
-            Coming soon: simple step-by-step instructions with timers.
-          </Text>
+          {steps?.map((s, i) => (
+            <View
+              key={i}
+              style={{
+                flexDirection: "row",
+                alignItems: "flex-start",
+                marginBottom: 10,
+              }}
+            >
+              <View
+                style={{
+                  width: 24,
+                  height: 24,
+                  borderRadius: 999,
+                  backgroundColor: Colors.accent,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: Spacing.sm,
+                }}
+              >
+                <Text
+                  style={{
+                    ...Typography.small,
+                    color: Colors.secondary,
+                    fontWeight: "700",
+                  }}
+                >
+                  {i + 1}
+                </Text>
+              </View>
+              <Text style={{ ...Typography.body, color: Colors.text, flex: 1 }}>
+                {s}
+              </Text>
+            </View>
+          ))}
+          {!steps?.length && (
+            <Text style={styles.muted}>No steps available.</Text>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

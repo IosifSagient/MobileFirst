@@ -1,11 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Redirect } from "expo-router";
+import { StyleSheet } from "react-native";
 
 export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello from React Native 👋</Text>
-    </View>
-  );
+  return <Redirect href="/(tabs)/weekly" />;
 }
 
 const styles = StyleSheet.create({

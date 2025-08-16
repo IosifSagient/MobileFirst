@@ -28,6 +28,10 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
+        name="index"
+        options={{ href: null }} // hides from the tab bar
+      />
+      <Tabs.Screen
         name="weekly/index"
         options={{
           title: "Dashbooard",
@@ -57,6 +61,7 @@ export default function TabLayout() {
         name="list/index"
         options={{
           title: "Ingredients",
+          href: null,
           tabBarIcon: ({ color }) => (
             <IconSymbol
               size={28}
@@ -70,6 +75,7 @@ export default function TabLayout() {
         name="settings/index"
         options={{
           title: "Settings",
+          href: null,
           tabBarIcon: ({ color }) => (
             <IconSymbol
               size={28}
